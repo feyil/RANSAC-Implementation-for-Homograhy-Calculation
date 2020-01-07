@@ -106,6 +106,11 @@ int main(int argc, char** argv)
      Image wall2(4, 4, 1);
      wall1.read_pnm("../wall1.ppm");
      wall2.read_pnm("../wall2.ppm");
+
+     // double theta = 0 * 3.1415926 / 180;
+     // Image wall2(wall3.w() + 100, wall3.h() + 100, 1);
+     // wall3.rotate_centered(&wall2, theta);
+
      wall1.to_grayscale();
      wall2.to_grayscale();
 
@@ -125,28 +130,53 @@ int main(int argc, char** argv)
           << " descriptors on wall2" << endl;
 
      vector<Match> wall_matches = Image::match_brief(desc1, desc2);
-     Image *match_image = make_match_image(wall_matches, wall1, keys1,
-                                              wall2, keys2, 20);
-     match_image->write_pnm("/tmp/wall_matches");
 
-     double matches[16] = {
-               0.0, 0.0, 3.0, 2.0,
-               1.0, 0.0, 4.0, 2.0,
-               1.0, 1.0, 4.0, 3.0,
-               0.0, 1.0, 3.0, 3.0
-     };
-     double h[9];
-     fit_homography4(&matches[0], &h[0]);
+     // Calculating homography
+     double h[9] = {};
+     int n_inliers_best = Image::find_homography(wall_matches, keys1, keys2, h);
+
      for (int i = 0; i < 9; ++i) {
                h[i] /= h[8];
      }
+     cout<<"n_inliers_best = "<<n_inliers_best<<endl;
      printf("---------- H ----------\n");
      printf("%6.2f %6.2f %6.2f\n", h[0], h[3], h[6]);
      printf("%6.2f %6.2f %6.2f\n", h[1], h[4], h[7]);
      printf("%6.2f %6.2f %6.2f\n", h[2], h[5], h[8]);
 
-     Image::find_homography(wall_matches, keys1, keys2, h);
+     // Transform with the best homography and select inliers
+     vector<Match> ransac_matches;
+     for(int i = 0; i < wall_matches.size(); i++) {
+
+          Keypoint keypoint1 = keys1[wall_matches[i].key_id0];
+          Keypoint keypoint2 = keys2[wall_matches[i].key_id1];
+
+          double w_h = h[2] * keypoint1.x + h[5] * keypoint1.y + h[8];
+          double x_h = (h[0] * keypoint1.x + h[3] * keypoint1.y + h[6]) / w_h;
+          double y_h = (h[1] * keypoint1.x + h[4] * keypoint1.y + h[7]) / w_h;
+
+          if(abs(keypoint2.x - x_h) < 3 && abs(keypoint2.y - y_h) < 3) {
+               
+               ransac_matches.push_back(wall_matches[i]);
+
+               // cout<<"Match Number: "<<i<<endl;
+               // cout<<"\tkey_id0xH:"<<"("<<x_h<<","<<y_h<<")"<<endl;
+               // cout<<"\tkey_id1:"<<"("<<keypoint2.x<<","<<keypoint2.y<<")"<<endl<<endl;
+          }
+     }
+
+     // Looking how well ransac is performing its job
+     Image *match_image = make_match_image(wall_matches, wall1, keys1,
+                                              wall2, keys2, 2000);
+     match_image->write_pnm("/tmp/wall_matches");
      
+
+     match_image = make_match_image(ransac_matches, wall1, keys1,
+                                             wall2, keys2, 2000);
+     match_image->write_pnm("/tmp/wall_matches_ransac");
+
+     cout<<"Image written to /tmp/wall_matches"<<endl;
+     cout<<"Image written to /tmp/wall_matches_ransac"<<endl;
 
      delete match_image;
 

@@ -581,14 +581,13 @@ int Image::find_homography(const std::vector<Match> &matches,
                     const std::vector<Keypoint> &keys1,
                     const std::vector<Keypoint> &keys2,
                     double* h)
-{
+{       
+        const int FIXED_ITERATION_SIZE = 5000;
         int n_inliers_best = 0;
-        double h_best[9] = { }; //Initialized to 0
-        
-        const int FIXED_ITERATION_SIZE = 1;
-        
+
+        // Main Loop
         for(int i = 0; i < FIXED_ITERATION_SIZE; i++) {
-                
+             
                 // Finding random four candidate match for homography calculation
                 double candidate_matches[16];
                 for(int j = 0; j < 4; j++) {
@@ -601,23 +600,40 @@ int Image::find_homography(const std::vector<Match> &matches,
                         candidate_matches[4 * j + 1] = keypoint1.y;
 
                         candidate_matches[4 * j + 2] = keypoint2.x;
-                        candidate_matches[4* j + 3] = keypoint2.y;
+                        candidate_matches[4 * j + 3] = keypoint2.y;
                 }
 
-                
-                
-                
+                // Calculating a homography for candidate_matches
+                double h_tmp[9];
+                fit_homography4(candidate_matches, h_tmp);
 
-                // use the fit_homography4 to compute a homography that fits the four selected matches
+                // Count number of inliers for calculated homography
+                int inlier_count = 0;
+                for(int a = 0; a < matches.size(); a++) {
+                        Keypoint keypoint1 = keys1[matches[a].key_id0];
+                        Keypoint keypoint2 = keys2[matches[a].key_id1];
 
-                // transform with homography
+                        double w_h = h_tmp[2] * keypoint1.x + h_tmp[5] * keypoint1.y + h_tmp[8];
+                        double x_h = (h_tmp[0] * keypoint1.x + h_tmp[3] * keypoint1.y + h_tmp[6]) / w_h;
+                        double y_h = (h_tmp[1] * keypoint1.x + h_tmp[4] * keypoint1.y + h_tmp[7]) / w_h; 
 
-                // is_inlier
+                        // Select inliers
+                        if(abs(keypoint2.x - x_h) < 3 && abs(keypoint2.y - y_h) < 3) {
+                                inlier_count += 1;
+                        }
 
-                // update the inlier
+                }
+   
+                // Update the n_inliers_best and h_best
+                if(inlier_count > n_inliers_best) {
+                        n_inliers_best = inlier_count;
 
+                        for(int b = 0; b < 9; b++) {
+                                h[b] = h_tmp[b];
+                        }
+                }
         }
-
+        
         return n_inliers_best;
 }
 
