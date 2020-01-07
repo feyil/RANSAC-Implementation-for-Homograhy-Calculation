@@ -1,0 +1,55 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_cd295/fast"
+/usr/bin/make -f CMakeFiles/cmTC_cd295.dir/build.make CMakeFiles/cmTC_cd295.dir/build
+make[1]: Entering directory '/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_cd295.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTC_cd295.dir/CheckSymbolExists.cxx.o -c "/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx"
+Linking CXX executable cmTC_cd295
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cd295.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_cd295.dir/CheckSymbolExists.cxx.o  -o cmTC_cd295 
+CMakeFiles/cmTC_cd295.dir/CheckSymbolExists.cxx.o: In function `main':
+CheckSymbolExists.cxx:(.text+0x1b): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_cd295.dir/build.make:97: recipe for target 'cmTC_cd295' failed
+make[1]: *** [cmTC_cd295] Error 1
+make[1]: Leaving directory '/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_cd295/fast' failed
+make: *** [cmTC_cd295/fast] Error 2
+
+File /home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_247ae/fast"
+/usr/bin/make -f CMakeFiles/cmTC_247ae.dir/build.make CMakeFiles/cmTC_247ae.dir/build
+make[1]: Entering directory '/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_247ae.dir/CheckFunctionExists.cxx.o
+/usr/bin/c++    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_247ae.dir/CheckFunctionExists.cxx.o -c "/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/build/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx"
+Linking CXX executable cmTC_247ae
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_247ae.dir/link.txt --verbose=1
+/usr/bin/c++   -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_247ae.dir/CheckFunctionExists.cxx.o  -o cmTC_247ae -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_247ae.dir/build.make:97: recipe for target 'cmTC_247ae' failed
+make[1]: *** [cmTC_247ae] Error 1
+make[1]: Leaving directory '/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_247ae/fast' failed
+make: *** [cmTC_247ae/fast] Error 2
+
+

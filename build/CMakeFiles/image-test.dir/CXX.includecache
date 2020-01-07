@@ -1,0 +1,92 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/brief_data.hpp
+
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/descriptor.hpp
+types.hpp
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/types.hpp
+
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/homography.cc
+homography.hpp
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/homography.hpp
+
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/homography.hpp
+
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/image.cc
+image.hpp
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/image.hpp
+iostream
+-
+fstream
+-
+cmath
+-
+cstring
+-
+ostream
+-
+memory
+-
+limits
+-
+brief_data.hpp
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/brief_data.hpp
+
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/image.hpp
+string
+-
+vector
+-
+types.hpp
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/types.hpp
+util.hpp
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/util.hpp
+keypoint.hpp
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/keypoint.hpp
+descriptor.hpp
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/descriptor.hpp
+
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/image_test.cc
+cstdlib
+-
+cstdio
+-
+iostream
+-
+image.hpp
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/image.hpp
+homography.hpp
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/homography.hpp
+
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/keypoint.hpp
+
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/types.hpp
+
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/util.cc
+util.hpp
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/util.hpp
+cstdio
+-
+cmath
+-
+memory
+-
+image.hpp
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/image.hpp
+
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/util.hpp
+vector
+-
+types.hpp
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/types.hpp
+keypoint.hpp
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/keypoint.hpp
+descriptor.hpp
+/home/feyil/Desktop/CENG391 Fall 2019/ceng391_06T/descriptor.hpp
+
