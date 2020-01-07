@@ -145,11 +145,8 @@ int main(int argc, char** argv)
      printf("%6.2f %6.2f %6.2f\n", h[1], h[4], h[7]);
      printf("%6.2f %6.2f %6.2f\n", h[2], h[5], h[8]);
 
-     //    delete key_image;
-     //    delete [] dx;
-     //    delete [] dy;
-     //    delete dx_img;
-     //    delete dy_img;
+     Image::find_homography(wall_matches, keys1, keys2, h);
+     
 
      delete match_image;
 

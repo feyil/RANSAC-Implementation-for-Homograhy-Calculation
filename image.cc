@@ -39,6 +39,8 @@
 #include <limits>
 
 #include "brief_data.hpp"
+#include "util.hpp"
+#include "homography.hpp"
 
 using std::cerr;
 using std::clog;
@@ -573,6 +575,50 @@ std::vector<Match> Image::match_brief(const std::vector<Descriptor>& d0,
         }
 
         return matches;
+}
+
+int Image::find_homography(const std::vector<Match> &matches, 
+                    const std::vector<Keypoint> &keys1,
+                    const std::vector<Keypoint> &keys2,
+                    double* h)
+{
+        int n_inliers_best = 0;
+        double h_best[9] = { }; //Initialized to 0
+        
+        const int FIXED_ITERATION_SIZE = 1;
+        
+        for(int i = 0; i < FIXED_ITERATION_SIZE; i++) {
+                
+                // Finding random four candidate match for homography calculation
+                double candidate_matches[16];
+                for(int j = 0; j < 4; j++) {
+                        int candidate = generate_random(0, matches.size() - 1);
+
+                        Keypoint keypoint1 = keys1[matches[candidate].key_id0];
+                        Keypoint keypoint2 = keys2[matches[candidate].key_id1];
+
+                        candidate_matches[4 * j] = keypoint1.x;
+                        candidate_matches[4 * j + 1] = keypoint1.y;
+
+                        candidate_matches[4 * j + 2] = keypoint2.x;
+                        candidate_matches[4* j + 3] = keypoint2.y;
+                }
+
+                
+                
+                
+
+                // use the fit_homography4 to compute a homography that fits the four selected matches
+
+                // transform with homography
+
+                // is_inlier
+
+                // update the inlier
+
+        }
+
+        return n_inliers_best;
 }
 
 }

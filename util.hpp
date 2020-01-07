@@ -85,6 +85,10 @@ void copy_from_buffer(T *dest, const float *buffer, int n, int stride)
                 dest[i * stride] = buffer[i];
 }
 
+int generate_random(int range_from, int range_to);
+
 }
+
+
 
 #endif

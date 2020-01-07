@@ -90,7 +90,10 @@ public:
 
         static std::vector<Match> match_brief(const std::vector<Descriptor>& d0,
                                               const std::vector<Descriptor>& d1);
-        
+        static int find_homography(const std::vector<Match> &matches, 
+                            const std::vector<Keypoint> &keys1,
+                            const std::vector<Keypoint> &keys2,
+                            double* h);
 private:
         int m_width;
         int m_height;

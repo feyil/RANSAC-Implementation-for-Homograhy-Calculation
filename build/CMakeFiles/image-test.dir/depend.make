@@ -6,6 +6,7 @@ CMakeFiles/image-test.dir/homography.cc.o: ../homography.hpp
 
 CMakeFiles/image-test.dir/image.cc.o: ../brief_data.hpp
 CMakeFiles/image-test.dir/image.cc.o: ../descriptor.hpp
+CMakeFiles/image-test.dir/image.cc.o: ../homography.hpp
 CMakeFiles/image-test.dir/image.cc.o: ../image.cc
 CMakeFiles/image-test.dir/image.cc.o: ../image.hpp
 CMakeFiles/image-test.dir/image.cc.o: ../keypoint.hpp
