@@ -1,3 +1,5 @@
+// 230201057
+
 // ------------------------------
 // Written by Mustafa Ozuysal
 // Contact <mustafaozuysal@iyte.edu.tr> for comments and bug reports
@@ -48,60 +50,6 @@ using std::printf;
 
 int main(int argc, char** argv)
 {
-     //    Image* gray = Image::new_gray(128, 128);
-     //    cout << "(" << gray->w() << "x" << gray->h() << ") channels: "
-     //         << gray->n_ch() << " step: " << gray->step() << endl;
-     //    gray->set_zero();
-     //    gray->set_rect(32, 32, 64, 64, 255);
-     //    gray->write_pnm("/tmp/test_image_gray");
-     //    delete gray;
-
-     //    Image* rgb = Image::new_rgb(128, 128);
-     //    cout << "(" << rgb->w() << "x" << rgb->h() << ") channels: "
-     //         << rgb->n_ch() << " step: " << rgb->step() << endl;
-     //    rgb->set_zero();
-     //    rgb->set_rect(32, 32, 64, 64, 255, 0, 255);
-     //    rgb->write_pnm("/tmp/test_image_rgb");
-     //    delete rgb;
-
-     //    Image img(4, 4, 1);
-     //    img.read_pnm("/tmp/test_image_gray.pgm");
-     //    img.to_rgb();
-     //    img.write_pnm("/tmp/test_image_gray2rgb");
-
-     //    img.read_pnm("/tmp/test_image_rgb.ppm");
-     //    img.to_grayscale();
-     //    img.write_pnm("/tmp/test_image_rgb2gray");
-
-     //    img.read_pnm("../small_city.pgm");
-     //    Image rotated(img.w()*2, img.h()*2, 1);
-     //    double theta = 45.0 * 3.1415926 / 180;
-     //    img.rotate_centered(&rotated, theta);
-     //    rotated.write_pnm("/tmp/small_city_crotated_45");
-
-     //    float threshold = 1000.0f;
-     //    float k = 0.06f;
-     //    float sigma = 2.5f;
-     //    vector<Keypoint> keys = img.harris_corners(threshold, k, sigma);
-     //    cout << "Detected " << keys.size()
-     //         << " keypoints on small_city.pgm" << endl;
-     //    Image *key_image = make_keypoint_image(&img, &keys);
-     //    key_image->write_pnm("/tmp/keys");
-
-     //    short *dx = img.deriv_x();
-     //    short *dy = img.deriv_y();
-     //    cout << "Derivatives computed" << endl;
-
-     //    Image *dx_img = short_to_image(dx, img.w(), img.h());
-     //    Image *dy_img = short_to_image(dy, img.w(), img.h());
-     //    dx_img->write_pnm("/tmp/dx");
-     //    dy_img->write_pnm("/tmp/dy");
-
-     //    float sigma_x = 5.5f;
-     //    float sigma_y = 5.5f;
-     //    img.smooth(sigma_x, sigma_y);
-     //    img.write_pnm("/tmp/smoothed_xy");
-
      Image wall1(4, 4, 1);
      Image wall2(4, 4, 1);
      wall1.read_pnm("../wall1.ppm");
