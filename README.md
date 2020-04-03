@@ -117,3 +117,7 @@ int main(int argc, char** argv)
      return EXIT_SUCCESS;
 }
 ```
+
+![alt text](https://github.com/feyil/RANSAC-Implementation-for-Homograhy-Calculation/blob/master/screenshots/ransac-result.png "ransac-result")
+
+![alt text](https://github.com/feyil/RANSAC-Implementation-for-Homograhy-Calculation/blob/master/screenshots/ransac-compile.png "ransac-compile")
